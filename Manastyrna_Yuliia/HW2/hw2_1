@@ -1,0 +1,26 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Write some number: ', (number) => {
+  
+  if (number%2===0 && number>10){
+    console.log('Number is even and greater then 10');
+  } else {if (number%2===0 && number<10){
+    console.log('Number is even and less then 10');
+  } else {if (number>10){
+    console.log('Number is not even and greater then 10');
+  } else{
+    console.log('Number is not even and less then 10');
+  } }}
+  
+  for (i=0; i<=number; i++) {
+    console.log(i);
+  }
+  rl.close();
+});
+
+  
