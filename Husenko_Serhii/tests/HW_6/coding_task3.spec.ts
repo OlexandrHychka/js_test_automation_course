@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, request } from "@playwright/test";
 import { login } from "../../helpers/authHelper";
 import fs from "fs";
 import path from "path";
@@ -32,8 +32,16 @@ test.describe("tests after authorization", () => {
         await context.close();
     });
 
-    test("some test", async ({ page }) => {
+    test("Check Logout button and /secure request", async ({ page }) => {
         await page.goto("https://the-internet.herokuapp.com/secure");
         await expect(page.getByRole("link", { name: "Logout" })).toBeVisible();
+
+        const secureRequest = await request.newContext({
+            storageState: authFile,
+        });
+        const response = await secureRequest.get(
+            "https://the-internet.herokuapp.com/secure"
+        );
+        expect(response).toBeOK();
     });
 });
