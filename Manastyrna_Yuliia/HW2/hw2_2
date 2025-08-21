@@ -1,0 +1,40 @@
+const prompt = require('prompt-sync')();
+let name = prompt(`Вітаю! Ваше імʼя? `).trim();
+let age = prompt(`Скільки вам років? `).trim();
+let isWorker;
+let experience;
+
+if (isNaN(age)){
+    console.log('Це не число')
+} else{
+    if (age<18){
+        console.log('Ви ще неповнолітній(я).')
+    } else{
+        isWorker=prompt('Ви працюєте? (так/ні): ').trim().toLowerCase();
+        if(isWorker!=='так' && isWorker!=='ні'){
+            console.log('Має бути так/ні');
+        } else {
+            if (isWorker=='ні'){
+                console.log('Ви повнолітній, але поки не працюєте.')
+            } else{
+                experience=prompt('Скільки років ви вже працюєте?: ').trim();
+                if (isNaN(experience)){
+                    console.log('Це не число')
+                } else {
+                    if (experience<3){
+                        console.log('Ви — початківець. Все ще попереду!')
+                    } else {
+                        if (experience>=3 && experience<=9){
+                            console.log('Ви — досвідчений працівник.')
+                        } else {
+                            if (experience>=10){
+                                console.log('Ви — справжній профі у своїй справі!')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
