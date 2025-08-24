@@ -1,0 +1,30 @@
+
+const prompt = require('prompt-sync')();
+let products=['хліб', 'молоко', 'яблука', 'макарони', 'ковбаса'];
+let prices=[28, 50, 60, 42, 300];
+let cart=[];
+let AddItem=' ';
+let total=0;
+
+console.log('Вітаю! Бажаєте зробити замовлення? Ви можете обрати хліб, молоко, яблука, макарони, ковбаса. Коли буде достатньо, напишіть стоп.');
+while (AddItem!=='стоп'){
+    AddItem=prompt('Що бажаєте додати до кошика?').trim().toLowerCase();
+    if (products.includes(AddItem)){
+        cart.push(AddItem);
+        total+=prices[products.indexOf(AddItem)];
+
+    } else{
+        if (AddItem!=='стоп'){
+            console.log('На жаль, не маємо такого продукта')}
+    }
+}
+console.log('Ваше замовлення: '+ cart);
+if (cart.includes('молоко') && cart.includes('хліб')){
+    total*=0.9;
+    console.log('Знижка 10% на все замовлення!');
+}
+if (total>500){
+    console.log('У вас безкоштовна доставка!');
+}
+console.log('Сума до сплати: '+ total);
+
