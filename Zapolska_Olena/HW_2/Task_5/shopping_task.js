@@ -38,6 +38,8 @@ for (const item of cart) {
 const hasMilk = cart.includes("milk");
 const hasBread = cart.includes("bread");
 
+let finalSum = totalSum
+
 if (hasMilk && hasBread) {
   const discount = totalSum * 0.1;
   finalSum = totalSum - discount;
@@ -53,3 +55,4 @@ if (cart.length > 0) {
 } else {
   alert('Your cart is empty!');
 }
+
