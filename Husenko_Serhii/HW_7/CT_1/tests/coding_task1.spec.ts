@@ -9,8 +9,10 @@ test("Checking the addition logic", async ({ page }) => {
     await toDoInput.press("Enter");
 
     const allToDoS = page.getByTestId("todo-title");
+    const firstToDo = allToDoS.first();
 
-    await expect(allToDoS.first()).toHaveText("Checking the addition logic");
+    await expect(firstToDo).toHaveText("Checking the addition logic");
+    await expect(firstToDo).toBeVisible();
 
     expect(allToDoS).toHaveCount(1);
 });
