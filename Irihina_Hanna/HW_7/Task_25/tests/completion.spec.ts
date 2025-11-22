@@ -11,6 +11,7 @@ for (const task of tasks) {
   await todoField.press('Enter');
    }
 
- await page.getByLabel('Toggle Todo').first().check()
+ await page.locator('ul > li').first().getByRole('checkbox').check()
  await  expect (page.getByRole('listitem').first()).toHaveClass('completed')
   })
+
