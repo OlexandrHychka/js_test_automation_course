@@ -2,26 +2,26 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
     testDir: './tests',
-    timeout: 30 * 1000,
-    expect: {
-        timeout: 5000,
-    },
+    fullyParallel: true,
+    
     use: {
-        baseURL: 'https://the-internet.herokuapp.com/',
         trace: 'on-first-retry',
     },
+
     projects: [
-    {
-        name: 'Chrome',
-        use: {
-            ...devices['Desktop Chrome'],
+        {
+            name: 'chromium',
+            use: {
+                ...devices['Desktop Chrome'],
+                baseURL: 'https://the-internet.herokuapp.com',
+            },
         },
-    },
-    {
-        name: 'Safari',
-        use: {
-            ...devices['Desktop Safari'],
+        {
+            name: 'webkit',
+            use: {
+                ...devices['Desktop Safari'],
+                baseURL: 'https://the-internet.herokuapp.com',
+            },
         },
-    },
-  ],
+    ],
 });
